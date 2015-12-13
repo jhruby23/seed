@@ -10,7 +10,7 @@
 				padding: 0;
 				width: 100%;
 				height: 100%;
-				color: #666;
+				color: #fff;
 				display: table;
 				font-weight: 100;
 				font-family: 'Lato';

@@ -14,12 +14,12 @@ class CreateBidConversationsTable extends Migration
     {
         Schema::create('bid_conversations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('bid')->unsigned();
+            $table->integer('bid_id')->unsigned();
             $table->integer('writer')->unsigned();
             $table->string('message');
             $table->timestamps();
             
-            $table->foreign('bid')
+            $table->foreign('bid_id')
             		->references('id')->on('bids');
             $table->foreign('writer')
             		->references('id')->on('users');

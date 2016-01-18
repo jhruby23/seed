@@ -29,4 +29,10 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     Route::auth();
     Route::get('/home', 'HomeController@index');
+    
+    Route::get('/categories', 'PagesController@categories');
+    Route::get('/product-types', 'PagesController@productTypes');
+    Route::get('/products', 'PagesController@products');
+    Route::get('/bids', 'PagesController@bids');
+    Route::get('/users', 'PagesController@users');
 });

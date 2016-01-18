@@ -6,12 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateBidConversationsTable' => $baseDir . '/database/migrations/2016_01_17_183852_create_bid_conversations_table.php',
-    'CreateBidsTable' => $baseDir . '/database/migrations/2016_01_17_183852_create_bids_table.php',
+    'BidConversationsTableSeeder' => $baseDir . '/database/seeds/BidConversationsTableSeeder.php',
+    'BidsTableSeeder' => $baseDir . '/database/seeds/BidsTableSeeder.php',
+    'CategoriesTableSeeder' => $baseDir . '/database/seeds/CategoriesTableSeeder.php',
+    'CreateBidConversationsTable' => $baseDir . '/database/migrations/2016_01_17_200527_create_bid_conversations_table.php',
+    'CreateBidsTable' => $baseDir . '/database/migrations/2016_01_17_200457_create_bids_table.php',
     'CreateCategoriesTable' => $baseDir . '/database/migrations/2016_01_17_175553_create_categories_table.php',
     'CreateCommentsTable' => $baseDir . '/database/migrations/2016_01_17_183518_create_comments_table.php',
     'CreateImagesTable' => $baseDir . '/database/migrations/2016_01_17_183504_create_images_table.php',
-    'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_01_17_183853_create_notifications_table.php',
+    'CreateNotificationsTable' => $baseDir . '/database/migrations/2016_01_17_200601_create_notifications_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProductTypesTable' => $baseDir . '/database/migrations/2016_01_17_175712_create_product_types_table.php',
     'CreateProductsTable' => $baseDir . '/database/migrations/2016_01_17_182612_create_products_table.php',
@@ -484,6 +487,8 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
+    'ProductTypesTableSeeder' => $baseDir . '/database/seeds/ProductTypesTableSeeder.php',
+    'ProductsTableSeeder' => $baseDir . '/database/seeds/ProductsTableSeeder.php',
     'SebastianBergmann\\Comparator\\ArrayComparator' => $vendorDir . '/sebastian/comparator/src/ArrayComparator.php',
     'SebastianBergmann\\Comparator\\Comparator' => $vendorDir . '/sebastian/comparator/src/Comparator.php',
     'SebastianBergmann\\Comparator\\ComparisonFailure' => $vendorDir . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -522,4 +527,5 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

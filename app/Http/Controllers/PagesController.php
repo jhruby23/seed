@@ -12,6 +12,7 @@ use App\ProductType;
 use App\Product;
 use App\Bid;
 use App\User;
+use \Auth;
 
 class PagesController extends Controller
 {
@@ -39,27 +40,6 @@ class PagesController extends Controller
 		}
 	}
 	
-	public function products()
-	{
-		echo '<pre>';
-		/*
-		$arr = Product::all()->toArray();
-		print_r($arr);
-		
-		$cat = Product::first()->category->toArray();
-		print_r($cat);
-		
-		$type = Product::first()->productType->toArray();
-		print_r($type);
-		
-		$bids = Product::first()->bids->toArray();
-		print_r($bids);
-		*/
-		echo '<h1>All product of current auth user with all details</h1>';
-		$arr = Product::where('id', \Auth::user()->id)->with('category', 'productType', 'bids', 'offered', 'comments', 'images')->get()->toArray();
-		print_r($arr);
-	}
-	
 	public function bids()
 	{
 		echo '<pre>';
@@ -80,10 +60,41 @@ class PagesController extends Controller
 		print_r($bid);
 	}
 	
-	public function users()
+	public function profile()
+	{
+		return view('layouts.profile');
+	}
+	
+	public function welcome()
+	{
+		if(Auth::check())
+			return redirect()->route('home');
+		return view('welcome');
+	}
+	
+	public function search($text)
+	{
+		return $text;
+	}
+	
+	public function offersAll()
 	{
 		echo '<pre>';
-		$arr = User::with(['bids', 'offers'])->get()->toArray();
-		print_r($arr);
+    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->get()->toArray();
+    	print_r($arr);
+	}
+	
+	public function offersTrending()
+	{
+		echo '<pre>';
+    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('views', 'desc')->get()->toArray();
+    	print_r($arr);
+	}
+	
+	public function offersNew()
+	{
+		echo '<pre>';
+    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('created_at', 'desc')->get()->toArray();
+    	print_r($arr);
 	}
 }

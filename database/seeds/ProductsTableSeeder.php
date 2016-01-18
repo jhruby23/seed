@@ -22,6 +22,7 @@ class ProductsTableSeeder extends Seeder
 	 			'description' => 'Desc',
 	 			'quantity' => 1,
 	 			'owner' => 1,
+	 			'public' => true,
 	 			'date_of_end' => Carbon::now()->addMonth()
     		]);
     		
@@ -33,6 +34,7 @@ class ProductsTableSeeder extends Seeder
 	 			'description' => 'Desc',
 	 			'quantity' => 10,
 	 			'owner' => 2,
+	 			'public' => true,
 	 			'date_of_end' => Carbon::now()->addMonths(2)
     		]);
     		
@@ -44,6 +46,7 @@ class ProductsTableSeeder extends Seeder
 	 			'description' => 'Desc',
 	 			'quantity' => 10,
 	 			'owner' => 1,
+	 			'public' => true,
 	 			'date_of_end' => Carbon::now()->addMonths(3)
     		]);
     }

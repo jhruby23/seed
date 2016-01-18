@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use \Auth;
 
 class Product extends Model
 {
@@ -18,6 +19,11 @@ class Product extends Model
 	];
 	
 	protected $dates = ['date_of_end'];
+	
+	public function owner()
+	{
+		return $this->belongsTo('App\User', 'owner');
+	}
 	
 	public function category()
 	{
@@ -47,5 +53,22 @@ class Product extends Model
 	public function images()
 	{
 		return $this->hasMany('App\Image');
+	}
+	
+	public function scopeNotMine($query)
+	{
+		if(Auth::check())
+			$query->where('owner', '!=', Auth::user()->id);
+	}	
+
+	public function scopeMine($query)
+	{
+		if(Auth::check())
+			$query->where('owner', '=', Auth::user()->id);
+	}
+	
+	public function scopeQueryable($query)
+	{
+		$query->where('public', true)->where('date_of_end', '>=', Carbon::now());
 	}
 }

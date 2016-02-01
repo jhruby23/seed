@@ -44,9 +44,29 @@ class User extends Authenticatable
 	    return $this->hasMany('App\Bid', 'owner');
     }
     
+    public function bidsCompleted()
+    {
+	    return $this->hasMany('App\Bid', 'owner')->completed();
+    }
+    
+    public function bidsActive()
+    {
+	    return $this->hasMany('App\Bid', 'owner')->active();
+    }
+    
     public function offers()
 	 {
 	    return $this->hasMany('App\Bid', 'buyer');
+    }
+    
+    public function offersCompleted()
+	 {
+	    return $this->hasMany('App\Bid', 'buyer')->completed();
+    }
+    
+    public function offersActive()
+	 {
+	    return $this->hasMany('App\Bid', 'buyer')->active();
     }
     
     public function comments()

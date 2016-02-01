@@ -40,5 +40,14 @@ class BidsTableSeeder extends Seeder
         		'date_completed' => NULL,
         		'success' => false
         ]);
+        
+        Bid::create([
+        		'item' => 2,
+        		'offer' => 1,
+        		'owner' => 2,
+        		'buyer' => 1,
+        		'date_completed' => NULL,
+        		'success' => false
+        ]);
     }
 }

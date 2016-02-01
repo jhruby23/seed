@@ -27,26 +27,24 @@ Route::group(['middleware' => ['web']], function () {
 	//auth, dashboard
 	Route::get('/', 'PagesController@welcome');
 	Route::auth();
-	Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
+	Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 	
 	//edit user profile
-	Route::get('/profile', ['as' => 'profile', 'uses' => 'PagesController@profile', 'middleware' => 'auth']);
+	Route::get('profile', ['as' => 'profile', 'uses' => 'PagesController@profile', 'middleware' => 'auth']);
 	
-	//resources for products and users
+	//resources for products, users and bids
 	Route::resource('products', 'ProductsController');
 	Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
+	Route::resource('bids', 'BidsController', ['except' => ['create', 'store']]);
 
 	//offered products
-	Route::get('/offers', 'PagesController@offersAll');
-	Route::get('/offers/trending', 'PagesController@offersTrending');
-	Route::get('/offers/new', 'PagesController@offersNew');
+	Route::get('offers', ['as' => 'offers', 'uses' =>'PagesController@offersAll']);
+	Route::get('offers/trending', 'PagesController@offersTrending');
+	Route::get('offers/new', 'PagesController@offersNew');
 	
-	
-	//not implemented yet
-	Route::get('/categories', 'PagesController@categories'); //->resource
-	Route::get('/product-types', 'PagesController@productTypes'); //->resource
-	Route::get('/bids', 'PagesController@bids'); //?
-	Route::get('/search/{text}', 'PagesController@search');
+	//Route::get('/categories', 'PagesController@categories'); //->resource
+	//Route::get('/product-types', 'PagesController@productTypes'); //->resource
+	Route::get('search/{text}', 'PagesController@search');
 });
 
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Seed | {{ $pageTitle }}</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -47,7 +47,11 @@
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <!--<li><a href="{{ route('home') }}">Home</a></li>-->
+                    <li><a href="{{ route('offers') }}">Offers</a></li>
+                    <li><a href="{{ route('products.index') }}">My products</a></li>
+                    <li><a href="{{ route('bids.index') }}">My bids</a></li>
+                    <li><a href="{{ route('home') }}">Search</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -73,7 +77,18 @@
         </div>
     </nav>
 
-    @yield('content')
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+	         	<div class="panel-heading">{{ $pageTitle }}</div>
+	         	<div class="panel-body">
+					@yield('content')
+	         	</div>
+				</div>
+			</div>
+		</div>
+	 </div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

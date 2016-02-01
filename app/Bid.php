@@ -27,4 +27,24 @@ class Bid extends Model
 	{
 		return $this->hasMany('App\BidConversation');
 	}
+	
+	public function sold()
+	{
+		return $this->belongsTo('App\Product', 'item');
+	}
+	
+	public function bought()
+	{
+		return $this->belongsTo('App\Product', 'offer');
+	}
+	
+	public function seller()
+	{	
+		return $this->belongsTo('App\User', 'owner');
+	}
+	
+	public function buyer()
+	{
+		return $this->belongsTo('App\User', 'buyer');
+	}
 }

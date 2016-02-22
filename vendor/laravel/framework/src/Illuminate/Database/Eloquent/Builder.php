@@ -232,16 +232,18 @@ class Builder
      */
     public function get($columns = ['*'])
     {
-        $models = $this->getModels($columns);
+        $builder = $this->applyScopes();
+
+        $models = $builder->getModels($columns);
 
         // If we actually found models we will also eager load any relationships that
         // have been specified as needing to be eager loaded, which will solve the
         // n+1 query issue for the developers to avoid running a lot of queries.
         if (count($models) > 0) {
-            $models = $this->eagerLoadRelations($models);
+            $models = $builder->eagerLoadRelations($models);
         }
 
-        return $this->model->newCollection($models);
+        return $builder->getModel()->newCollection($models);
     }
 
     /**
@@ -301,7 +303,7 @@ class Builder
 
         return $this->chunk($count, function ($results) use ($callback) {
             foreach ($results as $key => $value) {
-                if ($callback($item, $key) === false) {
+                if ($callback($value, $key) === false) {
                     return false;
                 }
             }
@@ -405,7 +407,7 @@ class Builder
      */
     public function update(array $values)
     {
-        return $this->query->update($this->addUpdatedAtColumn($values));
+        return $this->toBase()->update($this->addUpdatedAtColumn($values));
     }
 
     /**
@@ -466,7 +468,7 @@ class Builder
             return call_user_func($this->onDelete, $this);
         }
 
-        return $this->query->delete();
+        return $this->toBase()->delete();
     }
 
     /**
@@ -498,7 +500,7 @@ class Builder
      */
     public function getModels($columns = ['*'])
     {
-        $results = $this->toBase()->get($columns);
+        $results = $this->query->get($columns);
 
         $connection = $this->model->getConnectionName();
 
@@ -850,9 +852,9 @@ class Builder
         // Here we have the "has" query and the original relation. We need to copy over any
         // where clauses the developer may have put in the relationship function over to
         // the has query, and then copy the bindings from the "has" query to the main.
-        $relationQuery = $relation->getBaseQuery();
+        $relationQuery = $relation->toBase();
 
-        $hasQuery->mergeWheres(
+        $hasQuery->withoutGlobalScopes()->mergeWheres(
             $relationQuery->wheres, $relationQuery->getBindings()
         );
     }

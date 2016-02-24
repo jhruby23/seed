@@ -21,7 +21,7 @@ class CreateProductsTable extends Migration
             $table->string('description');
             $table->integer('quantity');
             $table->integer('views');
-            $table->integer('owner')->unsigned();
+            $table->integer('owner_id')->unsigned();
             $table->boolean('public');
             $table->dateTime('date_of_end');
             $table->timestamps();
@@ -30,7 +30,7 @@ class CreateProductsTable extends Migration
             		->references('id')->on('categories');
             $table->foreign('product_type_id')
             		->references('id')->on('product_types');
-            $table->foreign('owner')
+            $table->foreign('owner_id')
             		->references('id')->on('users');
         });
     }

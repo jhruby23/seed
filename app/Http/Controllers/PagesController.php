@@ -69,7 +69,8 @@ class PagesController extends Controller
 	{
 		if(Auth::check())
 			return redirect()->route('home');
-		return view('welcome');
+			
+		return view('welcome', ['latest' => $this->offersLatest(3), 'trending' => $this->offersTrending(3)]);
 	}
 	
 	public function search($text)
@@ -79,22 +80,16 @@ class PagesController extends Controller
 	
 	public function offersAll()
 	{
-		echo '<pre>';
-    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->get()->toArray();
-    	print_r($arr);
+    	return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->get();
 	}
 	
-	public function offersTrending()
+	public function offersTrending($limit = -1)
 	{
-		echo '<pre>';
-    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('views', 'desc')->get()->toArray();
-    	print_r($arr);
+    	return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('views', 'desc')->take($limit)->get();
 	}
 	
-	public function offersNew()
+	public function offersLatest($limit = -1)
 	{
-		echo '<pre>';
-    	$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('created_at', 'desc')->get()->toArray();
-    	print_r($arr);
+		return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('created_at', 'desc')->take($limit)->get();
 	}
 }

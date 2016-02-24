@@ -22,7 +22,7 @@ class Product extends Model
 	
 	public function owner()
 	{
-		return $this->belongsTo('App\User', 'owner');
+		return $this->belongsTo('App\User', 'owner_id');
 	}
 	
 	public function category()

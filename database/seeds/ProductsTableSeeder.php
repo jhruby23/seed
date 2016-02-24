@@ -21,9 +21,10 @@ class ProductsTableSeeder extends Seeder
 	 			'price' => 100,
 	 			'description' => 'Desc',
 	 			'quantity' => 1,
-	 			'owner' => 1,
+	 			'owner_id' => 1,
 	 			'public' => true,
-	 			'date_of_end' => Carbon::now()->addMonth()
+	 			'date_of_end' => Carbon::now()->addMonth(),
+	 			'views' => 400
     		]);
     		
     		Product::create([
@@ -33,9 +34,10 @@ class ProductsTableSeeder extends Seeder
 	 			'price' => 200,
 	 			'description' => 'Desc',
 	 			'quantity' => 10,
-	 			'owner' => 2,
+	 			'owner_id' => 2,
 	 			'public' => true,
-	 			'date_of_end' => Carbon::now()->addMonths(2)
+	 			'date_of_end' => Carbon::now()->addMonths(2),
+	 			'views' => 300
     		]);
     		
     		Product::create([
@@ -45,9 +47,10 @@ class ProductsTableSeeder extends Seeder
 	 			'price' => 300,
 	 			'description' => 'Desc',
 	 			'quantity' => 10,
-	 			'owner' => 1,
+	 			'owner_id' => 1,
 	 			'public' => true,
-	 			'date_of_end' => Carbon::now()->addMonths(3)
+	 			'date_of_end' => Carbon::now()->addMonths(3),
+	 			'views' => 500
     		]);
     }
 }

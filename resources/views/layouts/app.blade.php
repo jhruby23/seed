@@ -49,8 +49,10 @@
                 <ul class="nav navbar-nav">
                     <!--<li><a href="{{ route('home') }}">Home</a></li>-->
                     <li><a href="{{ route('offers') }}">Offers</a></li>
+                    @if(Auth::check())
                     <li><a href="{{ route('products.index') }}">My products</a></li>
                     <li><a href="{{ route('bids.index') }}">My bids</a></li>
+                    @endif
                     <li><a href="{{ route('home') }}">Search</a></li>
                 </ul>
 
@@ -78,17 +80,8 @@
     </nav>
 
 	<div class="container">
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-	         	<div class="panel-heading">{{ $pageTitle }}</div>
-	         	<div class="panel-body">
-					@yield('content')
-	         	</div>
-				</div>
-			</div>
-		</div>
-	 </div>
+		@yield('content')
+	</div>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

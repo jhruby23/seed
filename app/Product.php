@@ -58,13 +58,13 @@ class Product extends Model
 	public function scopeNotMine($query)
 	{
 		if(Auth::check())
-			$query->where('owner', '!=', Auth::user()->id);
+			$query->where('owner_id', '!=', Auth::user()->id);
 	}	
 
 	public function scopeMine($query)
 	{
 		if(Auth::check())
-			$query->where('owner', '=', Auth::user()->id);
+			$query->where('owner_id', '=', Auth::user()->id);
 	}
 	
 	public function scopeQueryable($query)

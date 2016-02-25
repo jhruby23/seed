@@ -39,8 +39,8 @@ Route::group(['middleware' => ['web']], function () {
 
 	//offered products
 	Route::get('offers', ['as' => 'offers', 'uses' =>'PagesController@offersAll']);
-	Route::get('offers/trending', 'PagesController@offersTrending');
-	Route::get('offers/new', 'PagesController@offersNew');
+	//Route::get('offers/trending', 'PagesController@offersTrending');
+	//Route::get('offers/new', 'PagesController@offersNew');
 	
 	//Route::get('/categories', 'PagesController@categories'); //->resource
 	//Route::get('/product-types', 'PagesController@productTypes'); //->resource

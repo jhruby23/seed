@@ -1130,80 +1130,6 @@
         ]
     },
     {
-        "name": "psy/psysh",
-        "version": "v0.6.1",
-        "version_normalized": "0.6.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bobthecow/psysh.git",
-            "reference": "0f04df0b23663799a8941fae13cd8e6299bde3ed"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0f04df0b23663799a8941fae13cd8e6299bde3ed",
-            "reference": "0f04df0b23663799a8941fae13cd8e6299bde3ed",
-            "shasum": ""
-        },
-        "require": {
-            "dnoegel/php-xdg-base-dir": "0.1",
-            "jakub-onderka/php-console-highlighter": "0.3.*",
-            "nikic/php-parser": "^1.2.1|~2.0",
-            "php": ">=5.3.9",
-            "symfony/console": "~2.3.10|^2.4.2|~3.0",
-            "symfony/var-dumper": "~2.7|~3.0"
-        },
-        "require-dev": {
-            "fabpot/php-cs-fixer": "~1.5",
-            "phpunit/phpunit": "~3.7|~4.0|~5.0",
-            "squizlabs/php_codesniffer": "~2.0",
-            "symfony/finder": "~2.1|~3.0"
-        },
-        "suggest": {
-            "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
-            "ext-pdo-sqlite": "The doc command requires SQLite to work.",
-            "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
-            "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
-        },
-        "time": "2015-11-12 16:18:56",
-        "bin": [
-            "bin/psysh"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-develop": "0.7.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "files": [
-                "src/Psy/functions.php"
-            ],
-            "psr-4": {
-                "Psy\\": "src/Psy/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Justin Hileman",
-                "email": "justin@justinhileman.info",
-                "homepage": "http://justinhileman.com"
-            }
-        ],
-        "description": "An interactive shell for modern PHP.",
-        "homepage": "http://psysh.org",
-        "keywords": [
-            "REPL",
-            "console",
-            "interactive",
-            "shell"
-        ]
-    },
-    {
         "name": "paragonie/random_compat",
         "version": "v1.2.0",
         "version_normalized": "1.2.0.0",
@@ -1429,17 +1355,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.16",
-        "version_normalized": "1.0.16.0",
+        "version": "1.0.17",
+        "version_normalized": "1.0.17.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031"
+            "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/183e1a610664baf6dcd6fceda415baf43cbdc031",
-            "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
+            "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
             "shasum": ""
         },
         "require": {
@@ -1452,8 +1378,7 @@
             "ext-fileinfo": "*",
             "mockery/mockery": "~0.9",
             "phpspec/phpspec": "^2.2",
-            "phpspec/prophecy-phpunit": "~1.0",
-            "phpunit/phpunit": "~4.8"
+            "phpunit/phpunit": "~4.8 || ~5.0"
         },
         "suggest": {
             "ext-fileinfo": "Required for MimeType",
@@ -1469,7 +1394,7 @@
             "league/flysystem-webdav": "Allows you to use WebDAV storage",
             "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
         },
-        "time": "2015-12-19 20:16:43",
+        "time": "2016-02-19 15:35:38",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1699,18 +1624,92 @@
         ]
     },
     {
-        "name": "laravel/framework",
-        "version": "v5.2.15",
-        "version_normalized": "5.2.15.0",
+        "name": "psy/psysh",
+        "version": "v0.7.0",
+        "version_normalized": "0.7.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "78fafb78d35c617e24630f4e099746effc42c787"
+            "url": "https://github.com/bobthecow/psysh.git",
+            "reference": "1573b36948a32bdaf43db525edf5e95d5a08ed06"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/78fafb78d35c617e24630f4e099746effc42c787",
-            "reference": "78fafb78d35c617e24630f4e099746effc42c787",
+            "url": "https://api.github.com/repos/bobthecow/psysh/zipball/1573b36948a32bdaf43db525edf5e95d5a08ed06",
+            "reference": "1573b36948a32bdaf43db525edf5e95d5a08ed06",
+            "shasum": ""
+        },
+        "require": {
+            "dnoegel/php-xdg-base-dir": "0.1",
+            "jakub-onderka/php-console-highlighter": "0.3.*",
+            "nikic/php-parser": "^1.2.1|~2.0",
+            "php": ">=5.3.9",
+            "symfony/console": "~2.3.10|^2.4.2|~3.0",
+            "symfony/var-dumper": "~2.7|~3.0"
+        },
+        "require-dev": {
+            "fabpot/php-cs-fixer": "~1.5",
+            "phpunit/phpunit": "~3.7|~4.0|~5.0",
+            "squizlabs/php_codesniffer": "~2.0",
+            "symfony/finder": "~2.1|~3.0"
+        },
+        "suggest": {
+            "ext-pcntl": "Enabling the PCNTL extension makes PsySH a lot happier :)",
+            "ext-pdo-sqlite": "The doc command requires SQLite to work.",
+            "ext-posix": "If you have PCNTL, you'll want the POSIX extension as well.",
+            "ext-readline": "Enables support for arrow-key history navigation, and showing and manipulating command history."
+        },
+        "time": "2016-02-20 16:27:05",
+        "bin": [
+            "bin/psysh"
+        ],
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.7.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "src/Psy/functions.php"
+            ],
+            "psr-4": {
+                "Psy\\": "src/Psy/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Justin Hileman",
+                "email": "justin@justinhileman.info",
+                "homepage": "http://justinhileman.com"
+            }
+        ],
+        "description": "An interactive shell for modern PHP.",
+        "homepage": "http://psysh.org",
+        "keywords": [
+            "REPL",
+            "console",
+            "interactive",
+            "shell"
+        ]
+    },
+    {
+        "name": "laravel/framework",
+        "version": "v5.2.21",
+        "version_normalized": "5.2.21.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "4df24638165650a833e072851cad39606da89faf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/4df24638165650a833e072851cad39606da89faf",
+            "reference": "4df24638165650a833e072851cad39606da89faf",
             "shasum": ""
         },
         "require": {
@@ -1725,7 +1724,7 @@
             "nesbot/carbon": "~1.20",
             "paragonie/random_compat": "~1.1",
             "php": ">=5.5.9",
-            "psy/psysh": "0.6.*",
+            "psy/psysh": "0.7.*",
             "swiftmailer/swiftmailer": "~5.1",
             "symfony/console": "2.8.*|3.0.*",
             "symfony/debug": "2.8.*|3.0.*",
@@ -1791,7 +1790,7 @@
             "symfony/css-selector": "Required to use some of the crawler integration testing tools (2.8.*|3.0.*).",
             "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (2.8.*|3.0.*)."
         },
-        "time": "2016-02-12 14:59:18",
+        "time": "2016-02-24 15:13:36",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2645,32 +2644,34 @@
     },
     {
         "name": "phpspec/prophecy",
-        "version": "v1.5.0",
-        "version_normalized": "1.5.0.0",
+        "version": "v1.6.0",
+        "version_normalized": "1.6.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/phpspec/prophecy.git",
-            "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7"
+            "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/4745ded9307786b730d7a60df5cb5a6c43cf95f7",
-            "reference": "4745ded9307786b730d7a60df5cb5a6c43cf95f7",
+            "url": "https://api.github.com/repos/phpspec/prophecy/zipball/3c91bdf81797d725b14cb62906f9a4ce44235972",
+            "reference": "3c91bdf81797d725b14cb62906f9a4ce44235972",
             "shasum": ""
         },
         "require": {
             "doctrine/instantiator": "^1.0.2",
+            "php": "^5.3|^7.0",
             "phpdocumentor/reflection-docblock": "~2.0",
-            "sebastian/comparator": "~1.1"
+            "sebastian/comparator": "~1.1",
+            "sebastian/recursion-context": "~1.0"
         },
         "require-dev": {
             "phpspec/phpspec": "~2.0"
         },
-        "time": "2015-08-13 10:07:40",
+        "time": "2016-02-15 07:46:21",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.4.x-dev"
+                "dev-master": "1.5.x-dev"
             }
         },
         "installation-source": "dist",

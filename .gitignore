@@ -1,4 +1,10 @@
-/vendor
+vendor/
+noda_modules/
 .env
 old
 .gitignore
+bootstrap/cache/
+storage/
+.env.*.php
+.env.php
+.env.example

@@ -18,11 +18,7 @@
 	         	<div class="panel-heading">Latest offers</div>
 	         	<div class="panel-body">
 	         	@foreach($latest as $offer)
-	         		<div class="col-md-4">
-		         		<h2>{{ link_to_route('products.show', $offer->name, [$offer->id]) }}</h2>
-		         		<p>{{ $offer->category->name }} - {{ $offer->subcategory->name }}</p>
-		         		<p>{{ $offer->price }}</p>
-	         		</div>
+         			@include('products.thumbnail', ['product' => $offer])
 	         	@endforeach
 	         	</div>
 				</div>
@@ -35,11 +31,7 @@
 	         	<div class="panel-heading">Trending offers</div>
 	         	<div class="panel-body">
 	         	@foreach($trending as $offer)	
-	         		<div class="col-md-4">
-		         		<h2>{{ link_to_route('products.show', $offer->name, [$offer->id]) }}</h2>
-		         		<p>{{ $offer->category->name }} - {{ $offer->subcategory->name }}</p>
-							<p>{{ $offer->price }}</p>
-	         		</div>
+	         		@include('products.thumbnail', ['product' => $offer])
 	         	@endforeach
 	         	</div>
 				</div>

@@ -51,7 +51,11 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-    		return Product::with('subcategory.category', 'images', 'owner')->queryable()->findOrFail($id);
+    		$product = Product::with('subcategory.category', 'images', 'owner')->queryable()->findOrFail($id);
+    		
+    		$related = Product::all();
+    		
+    		return view('products.show', compact('product', 'related'));
     }
 
     /**

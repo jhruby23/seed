@@ -10,4 +10,9 @@ class Comment extends Model
 	{
 		return $this->belongsTo(Product::class);
 	}
+	
+	public function author()
+	{
+		return $this->belongsTo(User::class, 'writer');
+	}
 }

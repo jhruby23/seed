@@ -18,7 +18,7 @@ class ProductsTableSeeder extends Seeder
     			'name' => 'Product One',
 	 			'subcategory_id' => 1,
 	 			'price' => 100,
-	 			'description' => 'Desc',
+	 			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, quo.',
 	 			'quantity' => 1,
 	 			'owner_id' => 1,
 	 			'public' => true,
@@ -30,7 +30,7 @@ class ProductsTableSeeder extends Seeder
     			'name' => 'Product Two',
 	 			'subcategory_id' => 2,
 	 			'price' => 200,
-	 			'description' => 'Desc',
+	 			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, pariatur.',
 	 			'quantity' => 10,
 	 			'owner_id' => 2,
 	 			'public' => true,
@@ -42,10 +42,22 @@ class ProductsTableSeeder extends Seeder
     			'name' => 'Product Three',
 	 			'subcategory_id' => 3,
 	 			'price' => 300,
-	 			'description' => 'Desc',
+	 			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur, obcaecati.',
 	 			'quantity' => 10,
 	 			'owner_id' => 1,
 	 			'public' => true,
+	 			'date_of_end' => Carbon::now()->addMonths(3),
+	 			'views' => 500
+    		]);
+    		
+    		Product::create([
+    			'name' => 'Product Three',
+	 			'subcategory_id' => 1,
+	 			'price' => 500,
+	 			'description' => 'Description',
+	 			'quantity' => 10,
+	 			'owner_id' => 2,
+	 			'public' => false,
 	 			'date_of_end' => Carbon::now()->addMonths(3),
 	 			'views' => 500
     		]);

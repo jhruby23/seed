@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use \Auth;
 
-class Product extends Model
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
+class Product extends Model implements SluggableInterface
 {
+	use SluggableTrait;
+
+   protected $sluggable = [
+   	'build_from' => 'name',
+      'save_to'    => 'slug',
+   ];
+   
 	protected $fillable = [
 		'name',
 		'category',

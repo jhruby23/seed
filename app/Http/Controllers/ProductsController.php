@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Product;
 use \Auth;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductsController extends Controller
 {
@@ -53,7 +54,7 @@ class ProductsController extends Controller
     {
     		$product = Product::queryable()->findOrFail($id);
     		
-    		$related = Product::all();
+	 		$related = $this->related($product);
     		
     		return view('products.show', compact('product', 'related'));
     }
@@ -90,5 +91,41 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    /**
+     * Select related products.
+     * 
+     * @param int $count
+     * @return Collection
+     */
+    public function related($product, $count = 3)
+    {
+	    	//select products from the same subcategory
+    		$related = Product::queryable()->notMine()->whereHas('subcategory', function($q) use ($product){
+	    		$q->where('name', $product->subcategory->name);
+    		})->whereNotIn('id', [$product->id])->orderBy('views', 'desc')->take($count)->get();
+    		
+    		//if not enough, add products from the same category
+    		if($related->count() < $count){
+    			$used = array_merge([$product->id], $related->lists('id')->toArray());
+    		
+	 			$cat = Product::queryable()->notMine()->whereHas('subcategory.category', function($q) use ($product){
+	    			$q->where('name', $product->category->name);
+		 		})->whereNotIn('id', $used)->orderBy('views', 'desc')->take($count - $related->count())->get();
+		 		
+		 		$related = $related->merge($cat);
+		 	}
+		 	
+		 	//if still not enough, add any popular products
+    		if($related->count() < $count){
+    			$used = array_merge([$product->id], $related->lists('id')->toArray());
+    		
+	 			$cat = Product::queryable()->notMine()->whereNotIn('id', $used)->orderBy('views', 'desc')->take($count - $related->count())->get();
+		 		
+		 		$related = $related->merge($cat);
+		 	}
+		 	
+		 	return $related;
     }
 }

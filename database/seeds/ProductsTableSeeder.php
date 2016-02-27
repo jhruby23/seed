@@ -24,6 +24,30 @@ class ProductsTableSeeder extends Seeder
 	 			'public' => true,
 	 			'date_of_end' => Carbon::now()->addMonth(),
 	 			'views' => 400
+    		]); 
+    		
+    		Product::create([
+    			'name' => 'Lorem Ipsum',
+	 			'subcategory_id' => 1,
+	 			'price' => 123,
+	 			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, quo.',
+	 			'quantity' => 10,
+	 			'owner_id' => 2,
+	 			'public' => true,
+	 			'date_of_end' => Carbon::now()->addMonth(),
+	 			'views' => 250
+    		]);
+    		
+    		Product::create([
+    			'name' => 'Another Awesome Product',
+	 			'subcategory_id' => 1,
+	 			'price' => 1000,
+	 			'description' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, quo.',
+	 			'quantity' => -1,
+	 			'owner_id' => 2,
+	 			'public' => true,
+	 			'date_of_end' => Carbon::now()->addMonth(),
+	 			'views' => 200
     		]);
     		
     		Product::create([

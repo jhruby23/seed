@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 use App\User;
+use App\Product;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -29,6 +30,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot($router);
+    
+        $router->bind('products', function($slug)
+        {
+	        return Product::where('slug', $slug)->firstOrFail();
+        });
         
         /*
         $router->bind('users', function($name)

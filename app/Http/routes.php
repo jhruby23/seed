@@ -36,8 +36,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::resource('products', 'ProductsController');
 	Route::resource('users', 'UsersController', ['except' => ['create', 'store']]);
 	Route::resource('bids', 'BidsController', ['except' => ['create', 'store']]);
-	Route::resource('categories', 'CategoriesContoller', ['only' => ['index', 'show']]);
-	Route::resource('categories.subcategories', 'SubcategoriesController', ['only', ['index', 'show']]);
+	//Route::resource('categories', 'CategoriesContoller', ['only' => ['index', 'show']]);
+	//Route::resource('categories.subcategories', 'SubcategoriesController', ['only', ['index', 'show']]);
 
 	//offered products
 	Route::get('offers', ['as' => 'offers', 'uses' =>'PagesController@offersAll']);

@@ -15,8 +15,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('category_id')->unsigned();
-            $table->integer('product_type_id')->unsigned();
+            $table->integer('subcategory_id')->unsigned();
             $table->integer('price');
             $table->string('description');
             $table->integer('quantity');
@@ -26,10 +25,8 @@ class CreateProductsTable extends Migration
             $table->dateTime('date_of_end');
             $table->timestamps();
             
-            $table->foreign('category_id')
-            		->references('id')->on('categories');
-            $table->foreign('product_type_id')
-            		->references('id')->on('product_types');
+            $table->foreign('subcategory_id')
+            		->references('id')->on('subcategories');
             $table->foreign('owner_id')
             		->references('id')->on('users');
         });

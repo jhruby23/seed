@@ -80,16 +80,16 @@ class PagesController extends Controller
 	
 	public function offersAll()
 	{
-    	return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->get();
+    	return Product::queryable()->notMine()->get();
 	}
 	
 	public function offersTrending($limit = -1)
 	{
-    	return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('views', 'desc')->take($limit)->get();
+    	return Product::queryable()->notMine()->orderby('views', 'desc')->take($limit)->get();
 	}
 	
 	public function offersLatest($limit = -1)
 	{
-		return Product::with('category', 'productType', 'images', 'owner')->queryable()->notMine()->orderby('created_at', 'desc')->take($limit)->get();
+		return Product::queryable()->notMine()->orderby('created_at', 'desc')->take($limit)->get();
 	}
 }

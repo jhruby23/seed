@@ -16,8 +16,7 @@ class ProductsTableSeeder extends Seeder
     {
     		Product::create([
     			'name' => 'Product One',
-	 			'category_id' => 1,
-	 			'product_type_id' => 1,
+	 			'subcategory_id' => 1,
 	 			'price' => 100,
 	 			'description' => 'Desc',
 	 			'quantity' => 1,
@@ -29,8 +28,7 @@ class ProductsTableSeeder extends Seeder
     		
     		Product::create([
     			'name' => 'Product Two',
-	 			'category_id' => 2,
-	 			'product_type_id' => 2,
+	 			'subcategory_id' => 2,
 	 			'price' => 200,
 	 			'description' => 'Desc',
 	 			'quantity' => 10,
@@ -42,8 +40,7 @@ class ProductsTableSeeder extends Seeder
     		
     		Product::create([
     			'name' => 'Product Three',
-	 			'category_id' => 3,
-	 			'product_type_id' => 3,
+	 			'subcategory_id' => 3,
 	 			'price' => 300,
 	 			'description' => 'Desc',
 	 			'quantity' => 10,

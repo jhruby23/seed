@@ -31,46 +31,46 @@ class User extends Authenticatable
     
     public function notifications()
     {
-	    return $this->hasMany('App\Notification');
+	    return $this->hasMany(Notification::class);
     }
     
     public function products()
     {
-	    return $this->hasMany('App\Product', 'owner');
+	    return $this->hasMany(Product::class, 'owner');
     }
     
     public function bids()
     {
-	    return $this->hasMany('App\Bid', 'owner');
+	    return $this->hasMany(Bid::class, 'owner');
     }
     
     public function bidsCompleted()
     {
-	    return $this->hasMany('App\Bid', 'owner')->completed();
+	    return $this->hasMany(Bid::class, 'owner')->completed();
     }
     
     public function bidsActive()
     {
-	    return $this->hasMany('App\Bid', 'owner')->active();
+	    return $this->hasMany(Bid::class, 'owner')->active();
     }
     
     public function offers()
 	 {
-	    return $this->hasMany('App\Bid', 'buyer');
+	    return $this->hasMany(Bid::class, 'buyer');
     }
     
     public function offersCompleted()
 	 {
-	    return $this->hasMany('App\Bid', 'buyer')->completed();
+	    return $this->hasMany(Bid::class, 'buyer')->completed();
     }
     
     public function offersActive()
 	 {
-	    return $this->hasMany('App\Bid', 'buyer')->active();
+	    return $this->hasMany(Bid::class, 'buyer')->active();
     }
     
     public function comments()
 	 {
-	    return $this->hasMany('App\Comment');
+	    return $this->hasMany(Comment::class);
     }
 }

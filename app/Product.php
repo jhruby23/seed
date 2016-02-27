@@ -11,7 +11,7 @@ class Product extends Model
 	protected $fillable = [
 		'name',
 		'category',
-		'product_type',
+		'subcategory',
 		'price',
 		'description',
 		'quantity',
@@ -22,37 +22,38 @@ class Product extends Model
 	
 	public function owner()
 	{
-		return $this->belongsTo('App\User', 'owner_id');
+		return $this->belongsTo(User::class, 'owner_id');
+	}
+	
+	public function subcategory()
+	{
+		return $this->belongsTo(Subcategory::class);
 	}
 	
 	public function category()
 	{
-		return $this->belongsTo('App\Category');
-	}
-	
-	public function productType()
-	{
-		return $this->belongsTo('App\ProductType');
+		$cat = $this->subcategory()->getResults();
+		return $cat->belongsTo(Category::class);
 	}
 	
 	public function bids()
 	{
-		return $this->hasMany('App\Bid', 'item');
+		return $this->hasMany(Bid::class, 'item');
 	}
 	
 	public function offered()
 	{
-		return $this->hasMany('App\Bid', 'offer');
+		return $this->hasMany(Bid::class, 'offer');
 	}
 	
 	public function comments()
 	{
-		return $this->hasMany('App\Comment');
+		return $this->hasMany(Comment::class);
 	}
 	
 	public function images()
 	{
-		return $this->hasMany('App\Image');
+		return $this->hasMany(Image::class);
 	}
 	
 	public function scopeNotMine($query)

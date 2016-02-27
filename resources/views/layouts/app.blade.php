@@ -39,17 +39,14 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}">SEED Exchange</a>
             </div>
 
             <div class="collapse navbar-collapse" id="spark-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <!--<li><a href="{{ route('home') }}">Home</a></li>-->
-                    <li><a href="{{ route('offers') }}">Offers</a></li>
                     @if(Auth::check())
+                    <li><a href="{{ route('offers') }}">Offers</a></li>
                     <li><a href="{{ route('products.index') }}">My products</a></li>
                     <li><a href="{{ route('bids.index') }}">My bids</a></li>
                     @endif

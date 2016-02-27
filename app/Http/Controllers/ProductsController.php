@@ -19,9 +19,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-    		echo '<pre>';
-    		$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->mine()->get()->toArray();
-    		print_r($arr);
+    		return Product::with('subcategory.category', 'images', 'owner')->queryable()->mine()->get();
     }
 
     /**
@@ -53,9 +51,7 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-    		$arr = Product::with('category', 'productType', 'images', 'owner')->queryable()->findOrFail($id)->toArray();
-    		echo '<pre>';
-    		print_r($arr);
+    		return Product::with('subcategory.category', 'images', 'owner')->queryable()->findOrFail($id);
     }
 
     /**

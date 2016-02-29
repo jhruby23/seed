@@ -4,7 +4,12 @@
 <div class="row">
 	<div class="col-md-10 col-md-offset-1">
 		<div class="panel panel-default">
-      	<div class="panel-heading">{{ $product->name }}</div>
+      	<div class="panel-heading">
+      		{{ $product->name }}
+      		@if(Auth::check() && $product->owner_id == Auth::user()->id)
+				<small>{{ link_to_route('products.edit', 'Edit', [$product->slug]) }}</small>
+				@endif
+			</div>
       	<div class="panel-body">
       		<p>{{ $product->category->name }} - {{ $product->subcategory->name }}</p>
       		<p>{{ $product->description }}</p>
@@ -45,7 +50,7 @@
       		
 				<div class="form-group">
 					<div class="col-md-14">
-						<textarea class="form-control" placeholder="Write your comment..."></textarea>
+						<textarea class="form-control" placeholder="Write your comment..." rows="5"></textarea>
 					</div>
 				</div>
 				<button class="btn btn-primary">Submit</button>

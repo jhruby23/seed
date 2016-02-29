@@ -18,7 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('slug')->unique();
             $table->integer('subcategory_id')->unsigned();
             $table->integer('price');
-            $table->string('description');
+            $table->text('description');
             $table->integer('quantity');
             $table->integer('views');
             $table->integer('owner_id')->unsigned();

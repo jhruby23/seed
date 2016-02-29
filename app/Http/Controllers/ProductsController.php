@@ -8,11 +8,17 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Product;
+use App\Category;
 use \Auth;
-use Illuminate\Database\Eloquent\Collection;
+use App\Http\Requests\ProductRequest;
 
 class ProductsController extends Controller
-{
+{	 
+	public function __construct()
+	{
+		$this->middleware('auth', ['except' => ['index', 'show']]);
+	}
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +26,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-    		return Product::with('subcategory.category', 'images', 'owner')->queryable()->mine()->get();
+    		$products = Product::queryable()->mine()->get();
+    		
+    		return view('products.index', compact('products'));
     }
 
     /**
@@ -29,8 +37,14 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {    		
+    		$cats = Category::with('subcategories')->get();
+    		$categories = [];
+    		
+    		foreach($cats as $cat)
+    			$categories = array_add($categories, $cat->name, $cat->subcategories->lists('name', 'id')->toArray());
+    		
+    		return view('products.create', compact('categories'));
     }
 
     /**
@@ -39,9 +53,27 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+    		$product = new Product;
+    		$product->name = $request->input('name');
+    		$product->description = $request->input('description');
+    		$product->subcategory_id = $request->input('subcategory_id');
+    		$product->price = $request->input('price');
+    		$product->views = 0;
+    		$product->owner_id = Auth::user()->id;
+    		$product->public = true;
+    		$product->date_of_end = \Carbon\Carbon::parse($request->input('date_of_end'));
+    		
+    		if($request->input('type') == 'item'){
+    			if(($request->has('quantity')) && ($request->input('quantity') >= 1))
+    				$product->quantity = $request->input('quantity');
+    		} else
+    			$product->quantity = -1;
+    		
+    		$product->save();
+    		
+    		return redirect()->route('products.show', $product->slug);
     }
 
     /**
@@ -52,7 +84,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {		
-	 		$related = $this->related($product);
+	 		$related = $product->related();
     		
     		return view('products.show', compact('product', 'related'));
     }
@@ -64,8 +96,17 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
-    {
-        //
+    {    		
+    		if($product->mine()){
+    			$cats = Category::with('subcategories')->get();
+	 			$categories = [];
+    		
+	 			foreach($cats as $cat)
+    				$categories = array_add($categories, $cat->name, $cat->subcategories->lists('name', 'id')->toArray());
+	    		
+	    		return view('products.edit', compact('product', 'categories'));
+	    	} else
+	    		return redirect()->route('products.show', $product->slug);
     }
 
     /**
@@ -75,9 +116,16 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
+    		$product->name = $request->input('name');
+    		$product->description = $request->input('description');
+    		$product->subcategory_id = $request->input('subcategory_id');
+    		$product->price = $request->input('price');
+    		
+    		$product->save();
+    		
+    		return redirect()->route('products.show', $product->slug);
     }
 
     /**
@@ -89,41 +137,5 @@ class ProductsController extends Controller
     public function destroy(Product $product)
     {
         //
-    }
-    
-    /**
-     * Select related products.
-     * 
-     * @param int $count
-     * @return Collection
-     */
-    public function related($product, $count = 3)
-    {
-	    	//select products from the same subcategory
-    		$related = Product::queryable()->notMine()->whereHas('subcategory', function($q) use ($product){
-	    		$q->where('name', $product->subcategory->name);
-    		})->whereNotIn('id', [$product->id])->orderBy('views', 'desc')->take($count)->get();
-    		
-    		//if not enough, add products from the same category
-    		if($related->count() < $count){
-    			$used = array_merge([$product->id], $related->lists('id')->toArray());
-    		
-	 			$cat = Product::queryable()->notMine()->whereHas('subcategory.category', function($q) use ($product){
-	    			$q->where('name', $product->category->name);
-		 		})->whereNotIn('id', $used)->orderBy('views', 'desc')->take($count - $related->count())->get();
-		 		
-		 		$related = $related->merge($cat);
-		 	}
-		 	
-		 	//if still not enough, add any popular products
-    		if($related->count() < $count){
-    			$used = array_merge([$product->id], $related->lists('id')->toArray());
-    		
-	 			$cat = Product::queryable()->notMine()->whereNotIn('id', $used)->orderBy('views', 'desc')->take($count - $related->count())->get();
-		 		
-		 		$related = $related->merge($cat);
-		 	}
-		 	
-		 	return $related;
     }
 }

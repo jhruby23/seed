@@ -45,6 +45,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('offers/new', 'PagesController@offersNew');
 	
 	Route::get('search/{text}', 'PagesController@search');
+	
+	//ajax requests
+	Route::post('add-comment', 'PagesController@comment');
 });
 
 

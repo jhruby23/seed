@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -12,7 +12,11 @@ use App\ProductType;
 use App\Product;
 use App\Bid;
 use App\User;
+use App\Comment;
 use \Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
+use Hash;
 
 class PagesController extends Controller
 {
@@ -91,5 +95,25 @@ class PagesController extends Controller
 	public function offersLatest($limit = -1)
 	{
 		return Product::queryable()->notMine()->orderby('created_at', 'desc')->take($limit)->get();
+	}
+	
+	public function comment()
+	{
+		$input['product'] = Input::get('product');
+		$input['text'] = Input::get('text');
+		$input['check'] = Input::get('check');
+		
+		$product = Product::queryable()->findOrFail($input['product']);
+		
+		if(Hash::check($product->slug, $input['check'])){
+			$comment = new Comment;
+		   $comment->product_id = $input['product'];
+		   $comment->writer = Auth::user()->id;
+			$comment->message = $input['text'];		
+			$comment->save();
+		}
+		
+		$comments = $product->comments;
+		return view('products.comments', compact('comments'));
 	}
 }

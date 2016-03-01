@@ -40,20 +40,20 @@
       	<div class="panel-body">
       		<h4>Feel free to ask</h4>
       		
-      		@foreach($product->comments as $comment)
-      		<div class="well">
-      			<h4>{{ $comment->author->name }}</h4>
-      			<p>on {{ $comment->created_at->format('d/m/Y') }}</p>
-      			<p>{{ $comment->message }}</p>
+      		<div id="comments">
+      			@include('products.comments', ['comments' => $product->comments])
       		</div>
-      		@endforeach
       		
+      		@if(Auth::check())
 				<div class="form-group">
 					<div class="col-md-14">
-						<textarea class="form-control" placeholder="Write your comment..." rows="5"></textarea>
+						<textarea id="comment-text" class="form-control" placeholder="Write your comment..." rows="5" data-id="{{ $product->id }}" data-check="{{ bcrypt($product->slug) }}"></textarea>
 					</div>
 				</div>
-				<button class="btn btn-primary">Submit</button>
+				<a href="#" class="btn btn-primary" id="add-comment">Submit</a>
+				@else
+					<p>Please login to comment</p>
+				@endif
       	</div>
 		</div>
 	</div>

@@ -10,8 +10,8 @@ jQuery(document).ready(function($){
 	
 		e.preventDefault();
 		$.ajax({
-			url: 'add-comment',
-			type: 'GET',
+			url: '../add-comment',
+			type: 'POST',
 			data: {
 				product: $textarea.data('id'),
 				check: $textarea.data('check'),

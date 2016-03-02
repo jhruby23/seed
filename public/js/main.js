@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 	
 		e.preventDefault();
 		$.ajax({
-			url: 'http://localhost:8000/add-comment',
+			url: 'add-comment',
 			type: 'POST',
 			data: {
 				product: $textarea.data('id'),

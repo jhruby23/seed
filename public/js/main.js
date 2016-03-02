@@ -11,7 +11,7 @@ jQuery(document).ready(function($){
 		e.preventDefault();
 		$.ajax({
 			url: 'add-comment',
-			type: 'POST',
+			type: 'GET',
 			data: {
 				product: $textarea.data('id'),
 				check: $textarea.data('check'),

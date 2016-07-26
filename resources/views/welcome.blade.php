@@ -1,40 +1,30 @@
 @extends('layouts.app', ['pageTitle' => 'Welcome'])
 
+@section('banner')
+	<div class="banner">
+		<p class="banner__title">Who are we?</p>
+		<p class="banner__subtitle">Placeholder</p>
+	</div>
+@endsection
+
 @section('content')
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-	         	<div class="panel-heading">Welcome</div>
-	         	<div class="panel-body">
-						<p>Your Application's Landing Page.</p>
-	         	</div>
-				</div>
-			</div>
+	<div class="section">
+		<h2 class="section__title">Trending</h2>
+		<p class="section__subtitle">Most viewed offers</p>
+		<div class="section__line"></div>
+
+		<div class="cols">
+			@each('products.thumbnail', $trending, 'product')
 		</div>
-		
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-	         	<div class="panel-heading">Latest offers</div>
-	         	<div class="panel-body">
-	         	@foreach($latest as $offer)
-         			@include('products.thumbnail', ['product' => $offer])
-	         	@endforeach
-	         	</div>
-				</div>
-			</div>
+	</div>
+
+	<div class="section">
+		<h2 class="section__title">Latest</h2>
+		<p class="section__subtitle">Most recent offers</p>
+		<div class="section__line"></div>
+
+		<div class="cols">
+			@each('products.thumbnail', $latest, 'product')
 		</div>
-		
-		<div class="row">
-			<div class="col-md-10 col-md-offset-1">
-				<div class="panel panel-default">
-	         	<div class="panel-heading">Trending offers</div>
-	         	<div class="panel-body">
-	         	@foreach($trending as $offer)	
-	         		@include('products.thumbnail', ['product' => $offer])
-	         	@endforeach
-	         	</div>
-				</div>
-			</div>
-		</div>
+	</div>
 @endsection

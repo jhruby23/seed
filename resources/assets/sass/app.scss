@@ -10,6 +10,10 @@ body, h1, h2, h3, h4, h5, h6 {
    padding: 0 !important;
 }
 
+p {
+   margin: 0;
+}
+
 .container {
    max-width: 960px;
 }
@@ -33,24 +37,28 @@ img {
    }
 }
 
-.navbar-default {
-   background: #fff;
-   border: none;
-   border-bottom: 1px solid #ddd;
-   padding: 8px;
+.navbar {
+   margin-bottom: 0;
 
-   .navbar-brand {
-      font-family: 'Roboto';
-      font-size: $text-size-title;
-      color: $primary;
-   }
+   .navbar-default {
+      background: #fff;
+      border: none;
+      border-bottom: 1px solid #ddd;
+      padding: 8px;
 
-   ul {
-      text-transform: uppercase;
-      font-size: $text-size-normal;
+      .navbar-brand {
+         font-family: 'Roboto';
+         font-size: $text-size-title;
+         color: $primary;
+      }
 
-      li a {
-         color: $primary !important;
+      ul {
+         text-transform: uppercase;
+         font-size: $text-size-normal;
+
+         li a {
+            color: $primary !important;
+         }
       }
    }
 }
@@ -80,7 +88,7 @@ img {
 
    &__subtitle {
       text-transform: uppercase;
-      margin-bottom: .6em;
+      margin-bottom: .65em;
       color: $light;
    }
 
@@ -96,8 +104,9 @@ img {
       margin-bottom: .6em;
 
       &--big {
-         font-size: $text-size-normal*1.15;
+         font-size: 1.15em;
          margin-bottom: 2.5em;
+         text-align: justify;
       }
    }
 }
@@ -110,7 +119,7 @@ img {
    outline: none;
    text-transform: uppercase;
    padding: .5em .9em;
-   font-size: $text-size-normal*1.2;
+   font-size: 1.2em;
 }
 
 select {
@@ -140,19 +149,81 @@ textarea {
 
 .comment {
    &__name {
-      font-size: $text-size-normal*1.25;
+      font-size: 1.25em;
       text-transform: uppercase;
       display: inline-block;
+      margin-bottom: .5em;
    }
 
    &__date {
       display: inline-block;
       color: $light;
-      margin-left: 1em;
+      margin-left: .75em;
    }
 
    &__text {
       margin-top: -.5em;
       margin-bottom: 2em;
+   }
+}
+
+.product {
+   padding: 0 1em;
+
+   &:first-of-type {
+      margin-left: -1em;
+   }
+
+   &:last-of-type {
+      margin-right: -1em;
+   }
+
+   &__info {
+      padding: 1em .75em 0;
+   }
+
+   &__name {
+      margin-bottom: .25em;
+
+      a {
+         color: $primary;
+         text-transform: uppercase;
+         font-weight: 400;
+         font-size: 1.2em;
+
+         &:hover {
+            text-decoration: none;
+         }
+      }
+   }
+
+   &__category {
+      color: $light;
+      font-size: .9em;
+   }
+
+   &__price {
+      font-weight: 400;
+      font-size: 1.1em;
+      line-height: 1.2;
+   }
+}
+
+.banner {
+   display: flex;
+   flex-direction: column;
+   background: url('https://unsplash.it/1920/400?blur');
+   height: 400px;
+   justify-content: center;
+   align-items: center;
+   color: #fff;
+   font-family: 'Roboto';
+
+   &__title {
+      font-size: 64px;
+   }
+
+   &__subtitle {
+      font-size: 48px;
    }
 }

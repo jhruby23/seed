@@ -7,6 +7,9 @@ body, h1, h2, h3, h4, h5, h6 {
   margin: 0 !important;
   padding: 0 !important; }
 
+p {
+  margin: 0; }
+
 .container {
   max-width: 960px; }
 
@@ -28,20 +31,22 @@ img {
     padding-right: 2em;
     padding-top: .5em; }
 
-.navbar-default {
-  background: #fff;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  padding: 8px; }
-  .navbar-default .navbar-brand {
-    font-family: 'Roboto';
-    font-size: 25.888px;
-    color: #555; }
-  .navbar-default ul {
-    text-transform: uppercase;
-    font-size: 16px; }
-    .navbar-default ul li a {
-      color: #555 !important; }
+.navbar {
+  margin-bottom: 0; }
+  .navbar .navbar-default {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 8px; }
+    .navbar .navbar-default .navbar-brand {
+      font-family: 'Roboto';
+      font-size: 25.888px;
+      color: #555; }
+    .navbar .navbar-default ul {
+      text-transform: uppercase;
+      font-size: 16px; }
+      .navbar .navbar-default ul li a {
+        color: #555 !important; }
 
 .section {
   padding: 40px 0; }
@@ -59,7 +64,7 @@ img {
       margin-bottom: 0 !important; }
   .section__subtitle {
     text-transform: uppercase;
-    margin-bottom: .6em;
+    margin-bottom: .65em;
     color: #888; }
   .section__line {
     display: block;
@@ -70,8 +75,9 @@ img {
   .section .text {
     margin-bottom: .6em; }
     .section .text--big {
-      font-size: 18.4px;
-      margin-bottom: 2.5em; }
+      font-size: 1.15em;
+      margin-bottom: 2.5em;
+      text-align: justify; }
 
 .button {
   display: block;
@@ -81,7 +87,7 @@ img {
   outline: none;
   text-transform: uppercase;
   padding: .5em .9em;
-  font-size: 19.2px; }
+  font-size: 1.2em; }
 
 select {
   background: none;
@@ -107,17 +113,61 @@ textarea {
   margin-bottom: 1.5em !important; }
 
 .comment__name {
-  font-size: 20px;
+  font-size: 1.25em;
   text-transform: uppercase;
-  display: inline-block; }
+  display: inline-block;
+  margin-bottom: .5em; }
 
 .comment__date {
   display: inline-block;
   color: #888;
-  margin-left: 1em; }
+  margin-left: .75em; }
 
 .comment__text {
   margin-top: -.5em;
   margin-bottom: 2em; }
+
+.product {
+  padding: 0 1em; }
+  .product:first-of-type {
+    margin-left: -1em; }
+  .product:last-of-type {
+    margin-right: -1em; }
+  .product__info {
+    padding: 1em .75em 0; }
+  .product__name {
+    margin-bottom: .25em; }
+    .product__name a {
+      color: #555;
+      text-transform: uppercase;
+      font-weight: 400;
+      font-size: 1.2em; }
+      .product__name a:hover {
+        text-decoration: none; }
+  .product__category {
+    color: #888;
+    font-size: .9em; }
+  .product__price {
+    font-weight: 400;
+    font-size: 1.1em;
+    line-height: 1.2; }
+
+.banner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: url("https://unsplash.it/1920/400?blur");
+  height: 400px;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto'; }
+  .banner__title {
+    font-size: 64px; }
+  .banner__subtitle {
+    font-size: 48px; }
 
 /*# sourceMappingURL=app.css.map */

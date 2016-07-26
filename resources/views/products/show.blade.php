@@ -57,11 +57,12 @@
 
 	@include('products.comments', ['comments' => $product->comments])
 
-	@if(!Auth::check())
+	@if(Auth::check())
 	<textarea id="comment-text" placeholder="Write your comment..." rows="5" data-id="{{ $product->id }}" data-check="{{ bcrypt($product->slug) }}"></textarea>
 	<button class="button" id="add-comment">Submit</a>
-	@else
+{{--	@else
 		<p class="text">Please login to comment</p>
+--}}
 	@endif
 </div>
 
@@ -70,8 +71,8 @@
 	<p class="section__subtitle">You might be interested in</p>
 	<div class="section__line"></div>
 
-	@foreach($related as $offer)
-		@include('products.thumbnail', ['product' => $offer])
-	@endforeach
+	<div class="cols">
+		@each('products.thumbnail', $related, 'product')
+	</div>
 </div>
 @endsection

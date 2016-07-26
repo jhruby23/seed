@@ -57,13 +57,15 @@
         </div>
     </nav>
 
-   <div>
-      @yield('banner')
-   </div>
+   @yield('banner')
 
    <div class="container">
       @yield('content')
    </div>
+
+   <footer>
+      &copy; 2016 Hoši z Dědiny
+   </footer>
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

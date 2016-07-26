@@ -177,14 +177,15 @@ textarea {
 }
 
 .product {
-   padding: 0 1em;
+   $product-padding: .45em;
+   padding: 0 $product-padding;
 
    &:first-of-type {
-      margin-left: -1em;
+      margin-left: -$product-padding;
    }
 
    &:last-of-type {
-      margin-right: -1em;
+      margin-right: -$product-padding;
    }
 
    &__info {

@@ -3,3 +3,4 @@
 composer.lock
 old
 .gitignore
+/node_modules

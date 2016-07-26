@@ -1,16 +1,13 @@
 @extends('layouts.app', ['pageTitle' => 'My products'])
 
 @section('content')
-<div class="row">
-	<div class="col-md-10 col-md-offset-1">
-		<div class="panel panel-default">
-      	<div class="panel-heading">My products</div>
-      	<div class="panel-body">
-      		@foreach($products as $product)
-	         	@include('products.thumbnail', ['product' => $product])
-      		@endforeach
-      	</div>
-		</div>
+<div class="section">
+	<h2 class="section__title">My products</h2>
+	<p class="section__subtitle"></p>
+	<div class="section__line"></div>
+
+	<div class="cols">
+		@each('products.thumbnail', $products, 'product')
 	</div>
 </div>
 @endsection

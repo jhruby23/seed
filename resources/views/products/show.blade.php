@@ -3,11 +3,11 @@
 @section('content')
 <div class="section">
 	<div class="cols">
-		<div class="col col-6">
+		<div class="col col-2">
 			<img src="https://unsplash.it/500/500?image=1060" class="hero-image">
 		</div>
 
-		<div class="col col-6">
+		<div class="col col-2">
 			<h1 class="section__title section__title--big">{{ $product->name }}</h1>
 			{{--
 			@if(Auth::check() && $product->owner_id == Auth::user()->id)
@@ -29,7 +29,7 @@
 	<div class="section__line"></div>
 
 	<div class="cols">
-		<div class="col col-6">
+		<div class="col col-2">
 			<p class="text">Do you want to trade for something you have already been offering?</p>
 			<p class="text">Just select your existing offer from the select box. It's easy as that!</p>
 			<select>
@@ -40,7 +40,7 @@
 			<button class="button">Exchange</button>
 		</div>
 
-		<div class="col col-6">
+		<div class="col col-2">
 			<p class="text">Alternatively, you can create a brand new offer.</p>
 			<p class="text">You will have the option to make this offer public in case this trade fails.</p>
 			<p class="text">Lorem ipsum.</p>
@@ -50,19 +50,24 @@
 	</div>
 </div>
 
-<div class="section" id="comments">
+<div class="section">
 	<h2 class="section__title">Comments</h2>
 	<p class="section__subtitle">Feel free to ask</p>
 	<div class="section__line"></div>
 
-	@include('products.comments', ['comments' => $product->comments])
+	@if(!$product->comments->isEmpty())
+		<div id="comments">
+			@each('products.comments', $product->comments, 'comment')
+		</div>
+	@else
+		<p class="text">There are no comments yet</p>
+	@endif
 
 	@if(Auth::check())
 	<textarea id="comment-text" placeholder="Write your comment..." rows="5" data-id="{{ $product->id }}" data-check="{{ bcrypt($product->slug) }}"></textarea>
 	<button class="button" id="add-comment">Submit</a>
-{{--	@else
+	@else
 		<p class="text">Please login to comment</p>
---}}
 	@endif
 </div>
 

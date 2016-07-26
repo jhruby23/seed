@@ -28,6 +28,15 @@ p {
    flex: 1 1 100%;
 }
 
+.col-2 {
+   max-width: 50%;
+}
+
+.col-3 {
+   max-width: 33.3%;
+   max-width: calc(100%/3);
+}
+
 img {
    max-width: 100%;
 
@@ -39,26 +48,26 @@ img {
 
 .navbar {
    margin-bottom: 0;
+}
 
-   .navbar-default {
-      background: #fff;
-      border: none;
-      border-bottom: 1px solid #ddd;
-      padding: 8px;
+.navbar-default {
+   background: #fff;
+   border: none;
+   border-bottom: 1px solid #ddd;
+   padding: 8px;
 
-      .navbar-brand {
-         font-family: 'Roboto';
-         font-size: $text-size-title;
-         color: $primary;
-      }
+   .navbar-brand {
+      font-family: 'Roboto';
+      font-size: $text-size-title;
+      color: $primary;
+   }
 
-      ul {
-         text-transform: uppercase;
-         font-size: $text-size-normal;
+   ul {
+      text-transform: uppercase;
+      font-size: $text-size-normal;
 
-         li a {
-            color: $primary !important;
-         }
+      li a {
+         color: $primary !important;
       }
    }
 }

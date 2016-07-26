@@ -1,4 +1,4 @@
-<div class="col product">
+<div class="col col-3 product">
 	<img class="product__image" src="https://unsplash.it/400">
 	<div class="product__info">
 		<p class="product__name">{{ link_to_route('products.show', $product->name, [$product->slug]) }}</p>

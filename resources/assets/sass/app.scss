@@ -1,2 +1,158 @@
-body {
+@import 'variables';
+
+body, h1, h2, h3, h4, h5, h6 {
+   font-family: 'Roboto Condensed', 'Lato', Arial, sans-serif;
+   font-weight: 300;
+   color: $primary;
+   font-size: $text-size-normal;
+   line-height: 1.5;
+   margin: 0 !important;
+   padding: 0 !important;
+}
+
+.container {
+   max-width: 960px;
+}
+
+.cols {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+
+.col {
+   flex: 1 1 100%;
+}
+
+img {
+   max-width: 100%;
+
+   &.hero-image {
+      padding-right: 2em;
+      padding-top: .5em;
+   }
+}
+
+.navbar-default {
+   background: #fff;
+   border: none;
+   border-bottom: 1px solid #ddd;
+   padding: 8px;
+
+   .navbar-brand {
+      font-family: 'Roboto';
+      font-size: $text-size-title;
+      color: $primary;
+   }
+
+   ul {
+      text-transform: uppercase;
+      font-size: $text-size-normal;
+
+      li a {
+         color: $primary !important;
+      }
+   }
+}
+
+.section {
+   padding: 40px 0;
+
+   &:first-of-type {
+      margin-top: 0px;
+   }
+
+   &:last-of-type {
+      margin-bottom: 0;
+   }
+
+   &__title {
+      font-size: $text-size-title;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: .2em !important;
+
+      &--big {
+         font-size: $text-size-huge;
+         margin-bottom: 0 !important;
+      }
+   }
+
+   &__subtitle {
+      text-transform: uppercase;
+      margin-bottom: .6em;
+      color: $light;
+   }
+
+   &__line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: $primary;
+      margin-bottom: 2em !important;
+   }
+
+   .text {
+      margin-bottom: .6em;
+
+      &--big {
+         font-size: $text-size-normal*1.15;
+         margin-bottom: 2.5em;
+      }
+   }
+}
+
+.button {
+   display: block;
+   background: $primary;
+   color: #fff;
+   border: none;
+   outline: none;
+   text-transform: uppercase;
+   padding: .5em .9em;
+   font-size: $text-size-normal*1.2;
+}
+
+select {
+   background: none;
+   outline: none;
+   border: 1px solid #ddd;
+   border-radius: 0;
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   padding: .5em 10em .5em 1em;
+   margin-top: .6em;
+   margin-bottom: 1.5em;
+   font-size: 14px;
+}
+
+textarea {
+   display: block;
+   width: 100%;
+   background: #f4f4f4;
+   border: 1px solid #ddd;
+   outline: none;
+   padding: .5em;
+   resize: vertical;
+   margin-bottom: 1.5em !important;
+}
+
+.comment {
+   &__name {
+      font-size: $text-size-normal*1.25;
+      text-transform: uppercase;
+      display: inline-block;
+   }
+
+   &__date {
+      display: inline-block;
+      color: $light;
+      margin-left: 1em;
+   }
+
+   &__text {
+      margin-top: -.5em;
+      margin-bottom: 2em;
+   }
 }
